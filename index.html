@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sarasota Skate Spots</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a href="#" class="logo">
+        <span>SARASOTA</span>
+        <strong>SKATE SPOTS</strong>
+    </a>
+
+    <nav>
+        <a href="#spots">SPOTS</a>
+        <a href="#parks">SKATE PARKS</a>
+        <a href="#map">MAP</a>
+        <a href="#skaters">SKATERS</a>
+        <a href="#events">EVENTS</a>
+        <a href="#submit">SUBMIT</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-overlay">
+
+        <p class="eyebrow">
+            SARASOTA, FLORIDA
+        </p>
+
+        <h1>
+            FIND YOUR<br>
+            SPOT.
+        </h1>
+
+        <p class="hero-text">
+            A community-built guide to skate spots,
+            parks, skaters, and events around Sarasota.
+        </p>
+
+        <a href="#spots" class="hero-button">
+            EXPLORE SPOTS ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="spots">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">
+                THE STREETS
+            </p>
+
+            <h2>
+                SKATE SPOTS
+            </h2>
+        </div>
+
+        <p class="section-description">
+            Street spots around Sarasota.
+            Locations are approximate unless noted.
+        </p>
+
+    </div>
+
+
+    <div class="filters">
+
+        <button
+            class="filter-button active"
+            onclick="filterSpots('all', this)"
+        >
+            ALL
+        </button>
+
+        <button
+            class="filter-button"
+            onclick="filterSpots('rail', this)"
+        >
+            RAILS
+        </button>
+
+        <button
+            class="filter-button"
+            onclick="filterSpots('ledge', this)"
+        >
+            LEDGES
+        </button>
+
+        <button
+            class="filter-button"
+            onclick="filterSpots('flatbar', this)"
+        >
+            FLAT BARS
+        </button>
+
+        <button
+            class="filter-button"
+            onclick="filterSpots('gap', this)"
+        >
+            GAPS
+        </button>
+
+    </div>
+
+
+    <div class="spot-grid">
+
+        <article class="spot-card" data-type="ledge">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="The Selby Library"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    LEDGE
+                </div>
+
+                <h3>
+                    THE SELBY LIBRARY
+                </h3>
+
+                <p>
+                    Downtown Sarasota spot with ledges
+                    and surrounding street terrain.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('selby')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="rail">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="SMH Hospital Rail"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    RAIL
+                </div>
+
+                <h3>
+                    SMH HOSPITAL RAIL
+                </h3>
+
+                <p>
+                    Street rail spot near Sarasota
+                    Memorial Hospital.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('smh')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="ledge">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Marina Jack's Ledge"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    LEDGE
+                </div>
+
+                <h3>
+                    MARINA JACK'S LEDGE
+                </h3>
+
+                <p>
+                    Downtown waterfront ledge spot
+                    near Marina Jack.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('marina')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="flatbar">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Main Street Flat Bar"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    FLAT BAR
+                </div>
+
+                <h3>
+                    MAIN STREET FLAT BAR
+                </h3>
+
+                <p>
+                    A downtown flat bar spot
+                    along Main Street.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('mainstreet')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="ledge">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Aloft Ledges"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    LEDGE
+                </div>
+
+                <h3>
+                    ALOFT LEDGES
+                </h3>
+
+                <p>
+                    Street-style ledges near
+                    the Aloft area.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('aloft')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="rail">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Gecko's Rail"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    RAIL
+                </div>
+
+                <h3>
+                    GECKO'S RAIL
+                </h3>
+
+                <p>
+                    A street rail spot in
+                    the Sarasota area.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('geckos')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="rail">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Pine View Rail"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    RAIL
+                </div>
+
+                <h3>
+                    PINE VIEW RAIL
+                </h3>
+
+                <p>
+                    Street rail spot near
+                    the Pine View area.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('pineview')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <article class="spot-card" data-type="gap">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Hollywood 20 Gap"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    GAP
+                </div>
+
+                <h3>
+                    HOLLYWOOD 20 GAP
+                </h3>
+
+                <p>
+                    A gap spot near the
+                    former Hollywood 20 area.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('hollywood20')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="section parks-section" id="parks">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                THE PARKS
+            </p>
+
+            <h2>
+                SKATE PARKS
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Dedicated skate parks around Sarasota.
+        </p>
+
+    </div>
+
+
+    <div class="spot-grid">
+
+        <article class="spot-card park-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=900&q=80"
+                alt="Payne Skate Park"
+            >
+
+            <div class="spot-content">
+
+                <div class="spot-type">
+                    SKATE PARK
+                </div>
+
+                <h3>
+                    PAYNE SKATE PARK
+                </h3>
+
+                <p>
+                    Located at 2010 Adams Lane,
+                    Sarasota, FL 34237.
+                    Open daily from 10:00 AM
+                    to 10:00 PM, 365 days a year.
+                    Features smooth concrete bowls,
+                    ramps, ledges, and rails.
+                </p>
+
+                <button
+                    class="map-link"
+                    onclick="focusLocation('payne')"
+                >
+                    VIEW ON MAP →
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="section map-section" id="map">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                EXPLORE
+            </p>
+
+            <h2>
+                SKATE MAP
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Find the spots and parks around Sarasota.
+        </p>
+
+    </div>
+
+
+    <div class="map-layout">
+
+        <div id="skateMap"></div>
+
+
+        <div class="map-sidebar">
+
+            <button onclick="focusLocation('payne')">
+                <strong>PAYNE SKATE PARK</strong>
+                <span>SKATE PARK</span>
+            </button>
+
+            <button onclick="focusLocation('selby')">
+                <strong>THE SELBY LIBRARY</strong>
+                <span>LEDGE</span>
+            </button>
+
+            <button onclick="focusLocation('smh')">
+                <strong>SMH HOSPITAL RAIL</strong>
+                <span>RAIL</span>
+            </button>
+
+            <button onclick="focusLocation('marina')">
+                <strong>MARINA JACK'S LEDGE</strong>
+                <span>LEDGE</span>
+            </button>
+
+            <button onclick="focusLocation('mainstreet')">
+                <strong>MAIN STREET FLAT BAR</strong>
+                <span>FLAT BAR</span>
+            </button>
+
+            <button onclick="focusLocation('aloft')">
+                <strong>ALOFT LEDGES</strong>
+                <span>LEDGE</span>
+            </button>
+
+            <button onclick="focusLocation('geckos')">
+                <strong>GECKO'S RAIL</strong>
+                <span>RAIL</span>
+            </button>
+
+            <button onclick="focusLocation('pineview')">
+                <strong>PINE VIEW RAIL</strong>
+                <span>RAIL</span>
+            </button>
+
+            <button onclick="focusLocation('hollywood20')">
+                <strong>HOLLYWOOD 20 GAP</strong>
+                <span>GAP</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section community-section" id="skaters">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                THE COMMUNITY
+            </p>
+
+            <h2>
+                SKATER PROFILES
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Create a profile and connect with local skaters.
+        </p>
+
+    </div>
+
+
+    <form id="profileForm" class="community-form">
+
+        <input
+            id="profileName"
+            type="text"
+            placeholder="Name"
+            required
+        >
+
+        <input
+            id="profileStyle"
+            type="text"
+            placeholder="Skating style"
+            required
+        >
+
+        <input
+            id="profileSpot"
+            type="text"
+            placeholder="Favorite spot"
+            required
+        >
+
+        <textarea
+            id="profileBio"
+            placeholder="Tell us about yourself"
+            required
+        ></textarea>
+
+        <button type="submit">
+            CREATE PROFILE →
+        </button>
+
+    </form>
+
+
+    <div id="profilesList" class="community-grid"></div>
+
+</section>
+
+
+<section class="section community-section" id="events">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                WHAT'S HAPPENING
+            </p>
+
+            <h2>
+                SKATE EVENTS
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Share local sessions, meetups,
+            contests, and events.
+        </p>
+
+    </div>
+
+
+    <form id="eventForm" class="community-form">
+
+        <input
+            id="eventName"
+            type="text"
+            placeholder="Event name"
+            required
+        >
+
+        <input
+            id="eventDate"
+            type="date"
+            required
+        >
+
+        <input
+            id="eventLocation"
+            type="text"
+            placeholder="Location"
+            required
+        >
+
+        <textarea
+            id="eventDescription"
+            placeholder="Event description"
+            required
+        ></textarea>
+
+        <button type="submit">
+            ADD EVENT →
+        </button>
+
+    </form>
+
+
+    <div id="eventsList" class="community-grid"></div>
+
+</section>
+
+
+<section class="section submit-section" id="submit">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                HELP BUILD THE MAP
+            </p>
+
+            <h2>
+                SUBMIT A SPOT
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Know a spot we missed?
+            Send it in.
+        </p>
+
+    </div>
+
+
+    <form
+        class="community-form"
+        action="https://formspree.io/f/xbgddnyv"
+        method="POST"
+    >
+
+        <input
+            name="spotName"
+            type="text"
+            placeholder="Spot name"
+            required
+        >
+
+        <input
+            name="spotLocation"
+            type="text"
+            placeholder="Location"
+            required
+        >
+
+        <select
+            name="spotType"
+            required
+        >
+
+            <option value="">
+                Select spot type
+            </option>
+
+            <option value="Rail">
+                Rail
+            </option>
+
+            <option value="Ledge">
+                Ledge
+            </option>
+
+            <option value="Flat Bar">
+                Flat Bar
+            </option>
+
+            <option value="Gap">
+                Gap
+            </option>
+
+        </select>
+
+
+        <textarea
+            name="spotDescription"
+            placeholder="Describe the spot"
+            required
+        ></textarea>
+
+
+        <button type="submit">
+            SUBMIT SPOT →
+        </button>
+
+    </form>
+
+</section>
+
+
+<footer>
+
+    <strong>
+        SARASOTA SKATE SPOTS
+    </strong>
+
+    <span>
+        BUILT FOR THE SARASOTA SKATE COMMUNITY.
+    </span>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
